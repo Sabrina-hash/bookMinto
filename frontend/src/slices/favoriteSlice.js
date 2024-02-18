@@ -3,9 +3,9 @@ import { updateCart } from "../utils/favoriteUtils";
 
 const initialState = localStorage.getItem("cart")
   ? JSON.parse(localStorage.getItem("cart"))
-  : { cartItems: [], shippingAddress: {}, paymentMethod: 'PayPal'};
+  : { cartItems: [] };
 
-const favoriteSlice = createSlice({
+const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
@@ -28,26 +28,9 @@ const favoriteSlice = createSlice({
       state.cartItems = state.cartItems.filter((x) => x._id !== action.payload);
       return updateCart(state);
     },
-    saveShippingAddress: (state, action) => {
-      state.shippingAddress = action.payload;
-      return updateCart(state);
-      //localStorage.setItem('cart', JSON.stringify(state));
-    },
-    savePaymentMethod: (state, action) => {
-      state.paymentMethod = action.payload;
-      return updateCart(state);
-      //localStorage.setItem('cart', JSON.stringify(state));
-    },
-    clearCartItems: (state, action) => {
-      state.cartItems = [];
-      return updateCart(state);
-    },
-    
-    //resetCart: (state) => (state = initialState),
-},
+  },
 });
 
-export const { addToCart, removeFromCart, saveShippingAddress,savePaymentMethod, 
-  clearCartItems, } = favoriteSlice.actions;
+export const { addToCart, removeFromCart } = cartSlice.actions;
 
-export default favoriteSlice.reducer;
+export default cartSlice.reducer;
