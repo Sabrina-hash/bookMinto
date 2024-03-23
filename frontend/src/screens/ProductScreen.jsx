@@ -59,7 +59,7 @@ const ProductScreen = () => {
   };
 
   const offerHandler = () => {
-    setNotification({message: 'Offer submitted successfully!', type: 'sucess'});
+    setNotification({message: 'Offer submitted successfully!', type: 'success'});
     handleCloseOfferModal();
   };
 

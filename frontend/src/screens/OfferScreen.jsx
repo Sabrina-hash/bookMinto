@@ -6,9 +6,10 @@ import { useNavigate } from 'react-router-dom';
 import FormContainer from '../components/FormContainer';
 
 const OfferScreen = () => {
+        const navigate = useNavigate();
 
         const acceptOffer = () => {
-            
+
         };
 
         const declineOffer = () => {
@@ -19,7 +20,7 @@ const OfferScreen = () => {
 
         };
 
-    
+
         return (
             <div>
                 <Button onClick ={acceptOffer}>Accept Offer</Button>
