@@ -6,6 +6,7 @@ import products from "./data/products.js";
 import User from "./models/userModel.js";
 import Product from "./models/productModel.js";
 import Order from "./models/orderModel.js";
+import Offer from "./models/offerModel.js";
 import connectDB from "./config/db.js";
 
 dotenv.config();
@@ -15,6 +16,7 @@ connectDB();
 const importData = async () => {
   try {
     // Clear out the database
+    await Offer.deleteMany();
     await Order.deleteMany();
     await Product.deleteMany();
     await User.deleteMany();
@@ -44,6 +46,7 @@ const importData = async () => {
 const destroyData = async () => {
   try {
     // Clear out the database
+    await Offer.deleteMany();
     await Order.deleteMany();
     await Product.deleteMany();
     await User.deleteMany();
