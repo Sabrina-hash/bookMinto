@@ -46,11 +46,9 @@ const Header = () => {
                   
                 </Nav.Link>
               </LinkContainer>
-              <LinkContainer to="/offers">
+              <LinkContainer to="/notifications">
                 <Nav.Link>
-                  <FaBell>
-                    
-                  </FaBell>
+                  <FaBell />
                 </Nav.Link>
               </LinkContainer>
               {userInfo ? (
