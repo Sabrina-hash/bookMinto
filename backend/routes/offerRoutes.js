@@ -1,10 +1,16 @@
 import express from 'express';
-import offerController from './offerController'; 
 const router = express.Router();
 
-router.post('/offers', offerController.createOffer);
-router.get('/offers/:userId', offerController.getOffersByUserId);
-router.put('/offers/:offerId', offerController.updateOffer);
-router.delete('/offers/:offerId', offerController.deleteOffer);
+import {
+    createOffer,
+    getOffersByUserId,
+    updateOffer,
+    deleteOffer,
+ } from '../controllers/offerController.js';
 
-module.exports = router;
+router.post('/offers', createOffer);
+router.get('/offers/:userId', getOffersByUserId);
+router.put('/offers/:offerId', updateOffer);
+router.delete('/offers/:offerId', deleteOffer);
+
+export default router;

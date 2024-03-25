@@ -1,7 +1,7 @@
 import Offer from "../models/offerModel.js";
 
 // Create an offer
-exports.createOffer = async (req, res) => {
+const createOffer = async (req, res) => {
   try {
     const offer = new Offer(req.body);
     await offer.save();
@@ -12,7 +12,7 @@ exports.createOffer = async (req, res) => {
 };
 
 // Get all offers for a particular user
-exports.getOffersByUserId = async (req, res) => {
+const getOffersByUserId = async (req, res) => {
   try {
     const offers = await Offer.find({ receiverId: req.params.userId });
     res.json(offers);
@@ -22,7 +22,7 @@ exports.getOffersByUserId = async (req, res) => {
 };
 
 // Update an offer's status
-exports.updateOffer = async (req, res) => {
+const updateOffer = async (req, res) => {
   try {
     const offer = await Offer.findByIdAndUpdate(
       req.params.offerId,
@@ -39,7 +39,7 @@ exports.updateOffer = async (req, res) => {
 };
 
 // Delete an offer
-exports.deleteOffer = async (req, res) => {
+const deleteOffer = async (req, res) => {
   try {
     const offer = await Offer.findByIdAndDelete(req.params.offerId);
     if (!offer) {
@@ -50,3 +50,5 @@ exports.deleteOffer = async (req, res) => {
     res.status(400).json({ message: error.message });
   }
 };
+
+export { createOffer, getOffersByUserId, updateOffer, deleteOffer };
