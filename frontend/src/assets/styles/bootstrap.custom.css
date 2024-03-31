@@ -294,6 +294,41 @@ p {
   margin-bottom: 1rem;
 }
 
+.notificationcontainer {
+  margin: 2rem;
+  width: 1100px;
+  background-color: var(--White);
+  padding: 1.5rem;
+  border: 1px solid var(--Light-blue); 
+  border-radius: 10px; 
+  box-shadow: 0 0 10px rgba(0, 0, 255, 0.1); 
+}
+
+.notfic_card {
+  display:flex;
+  align-items:center;
+  width: calc(100% - 3rem);
+}
+
+.notfic_card.unread {
+  background-color: var(--Light-grayish-blue-1);
+}
+
+
+.p {
+  color: var(--Dark-grayish-blue);
+}
+
+.strong {
+  color: var(--Very-dark-blue);
+  cursor: pointer;
+}
+
+.strong:hover {
+  color: var(--bs-green);
+}
+
+
 abbr[title] {
   -webkit-text-decoration: underline dotted;
   text-decoration: underline dotted;

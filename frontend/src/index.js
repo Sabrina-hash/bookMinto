@@ -37,7 +37,6 @@ const router = createBrowserRouter(
       <Route path="/login" element={<LoginScreen />} />
       <Route path="/register" element={<RegisterScreen />} />
       <Route path="/notifications" element={<NotificationScreen />} />
-
       <Route path='' element={<PrivateRoute />}>
       <Route path='/shipping' element={<ShippingScreen />} />
       <Route path="/profileupdate" element={<UpdateProfileScreen />} />
