@@ -5,6 +5,9 @@ const createOffer = async (req, res) => {
   try {
     const offer = new Offer(req.body);
     await offer.save();
+
+    const notification = await createNotification(offer);
+
     res.status(201).json(offer);
   } catch (error) {
     res.status(400).json({ message: error.message });
@@ -48,6 +51,23 @@ const deleteOffer = async (req, res) => {
     res.json({ message: 'Offer deleted successfully' });
   } catch (error) {
     res.status(400).json({ message: error.message });
+  }
+};
+
+const createNotification = async (offer) => {
+  try {
+
+    const notification = new Notification({
+      userId: offer.receiverId,
+      message: 'New offer received: ${offer.offerAmount}',
+      type: 'offer'
+
+    });
+    await notification.save();
+    return notification;
+  } catch (error) {
+    console.error('Error creating notification:', error);
+    throw new Error('Failed to create notification');
   }
 };
 

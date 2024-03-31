@@ -17,8 +17,12 @@ import Message from "../components/Message";
 import { useGetProductDetailsQuery } from "../slices/productsApiSlice";
 import { addToCart } from "../slices/favoriteSlice";
 import Notification from "../components/Notification";
+<<<<<<< HEAD
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+=======
+import axios from 'axios';
+>>>>>>> 1f8d758 (fighting this linking to show up)
 //import { FaTrash } from "react-icons/fa";
 
 const ProductScreen = () => {
@@ -62,6 +66,8 @@ const ProductScreen = () => {
     });
   };
 
+
+  const [offerAmount, setOfferAmount] = useState('');
   const [showOfferModal, setShowOfferModal] = useState(false);
 
   const handleCloseOfferModal = () => setShowOfferModal(false);
@@ -71,10 +77,26 @@ const ProductScreen = () => {
     handleShowOfferModal();
   };
 
+  const offerHandler = async () => {
+    try {
+      const response = await axios.post('/api/offers', { offerAmount});
+      console.log(response.data);
+    } catch (error) {
+      console.error('Error creating offer:', error);
+    } finally {
+      handleCloseOfferModal();
+    }
+  }
+
+
+  /*
+
   const offerHandler = () => {
     setNotification({message: 'Offer submitted successfully!', type: 'sucess'});
     handleCloseOfferModal();
   };
+
+  */
 
   return (
     <>
@@ -207,6 +229,8 @@ const ProductScreen = () => {
               placeholder="Enter amount"
               inputMode="numeric"
               min="1"
+              value={offerAmount}
+              onChange={(e) => setOfferAmount(e.target.value)}
             />
           </Form.Group>
         </Modal.Body>
