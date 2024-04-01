@@ -17,6 +17,7 @@ import Message from "../components/Message";
 import { useGetProductDetailsQuery } from "../slices/productsApiSlice";
 import { addToCart } from "../slices/favoriteSlice";
 import Notification from "../components/Notification";
+import { setSelectedProduct } from "../slices/checkoutSlice";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 //import { FaTrash } from "react-icons/fa";
@@ -30,14 +31,20 @@ const ProductScreen = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const selectedProduct = useSelector((state) => state.checkout.selectedProduct);
+
+
   const [qty, setQty] = useState(1);
 
-  const { cartItems } = useSelector((state) => state.cart);
+  //const { cartItems } = useSelector((state) => state.cart);
 
   const checkoutHandler = () => {
-    console.log('Proceeding to checkout...');
-    navigate('/login?redirect=/shipping');
+    console.log("Proceeding to checkout...");
+    dispatch(setSelectedProduct(product)); // Dispatch the selected product to Redux
+    navigate("/shipping");
   };
+  
+  
   
 
   const {
@@ -75,6 +82,8 @@ const ProductScreen = () => {
     setNotification({message: 'Offer submitted successfully!', type: 'sucess'});
     handleCloseOfferModal();
   };
+
+ 
 
   return (
     <>
@@ -182,7 +191,7 @@ const ProductScreen = () => {
                   <Button
                     className="btn-block"
                     type="button"
-                    disabled={cartItems.length === 0}
+                    disabled={product.countInStock === 0}
                     onClick={checkoutHandler}
                   >
                     Proceed To Checkout
