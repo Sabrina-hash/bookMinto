@@ -17,12 +17,9 @@ import Message from "../components/Message";
 import { useGetProductDetailsQuery } from "../slices/productsApiSlice";
 import { addToCart } from "../slices/favoriteSlice";
 import Notification from "../components/Notification";
-<<<<<<< HEAD
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-=======
 import axios from 'axios';
->>>>>>> 1f8d758 (fighting this linking to show up)
 //import { FaTrash } from "react-icons/fa";
 
 const ProductScreen = () => {
